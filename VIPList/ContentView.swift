@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showingPicker = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+               
+                Button("Add Profile Pics") {
+                    showingPicker = true
+                }
+            }.navigationBarTitle("VIPList")
+            .sheet(isPresented: $showingPicker, content: {
+                ImagePicker()
+            })
+           
+        }
+        
     }
 }
 
