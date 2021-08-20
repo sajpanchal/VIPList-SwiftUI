@@ -15,6 +15,7 @@
 		7202441026CEB81C001A6BE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7202440E26CEB81C001A6BE7 /* LaunchScreen.storyboard */; };
 		7202441826CEBA52001A6BE7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7202441726CEBA52001A6BE7 /* ImagePicker.swift */; };
 		7240C13B26CFFD1200229389 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240C13A26CFFD1200229389 /* Contact.swift */; };
+		7240C13D26D00B9F00229389 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240C13C26D00B9F00229389 /* ContactListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7202441126CEB81C001A6BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7202441726CEBA52001A6BE7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7240C13A26CFFD1200229389 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		7240C13C26D00B9F00229389 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		720243F726CEB819001A6BE7 = {
 			isa = PBXGroup;
 			children = (
+				7240C13C26D00B9F00229389 /* ContactListView.swift */,
 				7240C13A26CFFD1200229389 /* Contact.swift */,
 				7202440226CEB819001A6BE7 /* VIPList */,
 				7202440126CEB819001A6BE7 /* Products */,
@@ -154,6 +157,7 @@
 				7202440426CEB81A001A6BE7 /* AppDelegate.swift in Sources */,
 				7202441826CEBA52001A6BE7 /* ImagePicker.swift in Sources */,
 				7240C13B26CFFD1200229389 /* Contact.swift in Sources */,
+				7240C13D26D00B9F00229389 /* ContactListView.swift in Sources */,
 				7202440626CEB81A001A6BE7 /* SceneDelegate.swift in Sources */,
 				7202440826CEB81A001A6BE7 /* ContentView.swift in Sources */,
 			);

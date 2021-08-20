@@ -25,6 +25,9 @@ struct ContentView: View {
                     showingPicker = true
                 }
             }.navigationBarTitle("VIPList")
+            .navigationBarItems(trailing: NavigationLink(
+                                    destination: ContactListView(contactList: contactList),
+                                    label: {Text("List")}))
             .sheet(isPresented: $showingPicker, onDismiss: loadImage, content: {
                 // pass the empty UIImage instance to Picker.
                 //it will then return it with an selected image.
@@ -33,7 +36,9 @@ struct ContentView: View {
                 
                 
             })
-            .sheet(isPresented: $showTextField, content: {
+            .sheet(isPresented: $showTextField, onDismiss: {
+                
+            } , content: {
                 VStack {
                     Section(header: Text("Enter the Contact name:")) {
                         TextField("Name", text: $contact.name)
@@ -45,12 +50,10 @@ struct ContentView: View {
                     Button("Save") {
                         contactList.contacts.append(contact)
                         writeData()
+                        showTextField = false
                     }
                 }
-                
-                
             })
-           
         }.onAppear(perform: readData)
         
     }
@@ -66,6 +69,7 @@ struct ContentView: View {
     func convertImageToData(uiImage: UIImage) {
         if let jpegData = uiImage.jpegData(compressionQuality: 0.8) {
             contact.imageData = jpegData
+            
         }
     }
     func getDocumentsDirectory() -> URL {
@@ -80,10 +84,11 @@ struct ContentView: View {
             let jsonEncoder = JSONEncoder()
             if let data = try? jsonEncoder.encode(contactList.contacts) {
                 try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
+                print("data written:", contactList.contacts)
             }
         }
         catch {
-            print(error.localizedDescription)
+            print("writeData() error:",error.localizedDescription)
         }
     }
     
@@ -92,10 +97,10 @@ struct ContentView: View {
             let decodedData = try Data(contentsOf: getDocumentsDirectory())
             let decoder = JSONDecoder()
             contactList.contacts = try decoder.decode([Contact].self, from: decodedData)
-            
+            print("data read:", contactList.contacts)
         }
         catch {
-            
+            print("readData() error:",error.localizedDescription)
         }
         
     }
