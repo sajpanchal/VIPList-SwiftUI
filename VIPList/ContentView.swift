@@ -10,20 +10,52 @@ import SwiftUI
 struct ContentView: View {
     @State var showingPicker = false
     @State var image: Image?
+    @State var showNameText = false
+    @State var showButton = false
     //pass this image to ImagePicker.
     @State var inputImage: UIImage?
     @State var showTextField = false
+    @State var showAlert = false
     @State var contact: Contact = Contact()
     @ObservedObject var contactList: ContactList = ContactList()
     var body: some View {
         NavigationView {
-            VStack {
-                image?
-                    .resizable()
-                    .scaledToFit()
-                Button("Add Profile Pics") {
-                    showingPicker = true
+            Form {
+                Section(header: Text("Profile Pic")) {
+                    VStack {
+                        image?
+                            .resizable()
+                            .frame(width: 300, height: 300, alignment: .top)
+                        Group {
+                            Button("Upload") {
+                                showingPicker = true
+                                
+                            }
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 30)
+                            .background(Color.gray)
+                            .cornerRadius(3.0)
+                            .foregroundColor(.black)
+                            
+                        }.frame(width: 100, height: 50, alignment: .bottom)
+                        
+                    }
+                   
                 }
+                Section(header: Text("Enter the Contact name:")) {
+                    TextField("Name", text: $contact.name)
+                        .padding()
+                        .disabled(image == nil)
+                }
+              /*  NavigationLink(
+                    destination: ContactListView(contactList: contactList),
+                    label: {*/Button("Save") {
+                        contactList.contacts.append(contact)
+                        writeData()
+                        showAlert = true
+                    }
+                    .disabled(contact.name.count < 2)
+                   //})
+            
             }.navigationBarTitle("VIPList")
             .navigationBarItems(trailing: NavigationLink(
                                     destination: ContactListView(contactList: contactList),
@@ -36,9 +68,16 @@ struct ContentView: View {
                 
                 
             })
-            .sheet(isPresented: $showTextField, onDismiss: {
+            .alert(isPresented: $showAlert, content: {
+                DispatchQueue.main.async {
+                    contact.name = ""
+                    image = nil
+                }
+               
+                return Alert(title: Text("Success!"), message: Text("New Contact Saved."), dismissButton: .default(Text("Continue")))
                 
-            } , content: {
+            })
+            /*  .sheet(isPresented: $showTextField, onDismiss: {}, content: {
                 VStack {
                     Section(header: Text("Enter the Contact name:")) {
                         TextField("Name", text: $contact.name)
@@ -53,7 +92,7 @@ struct ContentView: View {
                         showTextField = false
                     }
                 }
-            })
+            })*/
         }.onAppear(perform: readData)
         
     }

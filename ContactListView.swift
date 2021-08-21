@@ -10,18 +10,32 @@ import SwiftUI
 struct ContactListView: View {
     @State var contactList: ContactList
     var body: some View {
-        List(contactList.contacts, id: \.name) { contact in
-            HStack {
-            
-                Image(uiImage: UIImage(data: contact.imageData)!)
-                    .resizable()
-                    .frame(width: 75, height: 75, alignment: .leading)
-                Text(contact.name)
-                    .frame(width: 200, height: 50, alignment: .center)
-                    
+       
+            List(contactList.contacts, id: \.name) { contact in
+                NavigationLink(
+                    destination: VStack {
+                        Text(contact.name)
+                            .font(.largeTitle)
+                        Image(uiImage: UIImage(data: contact.imageData)!)
+                        .resizable()
+                            .scaledToFit()
+                      
+                    },
+                    label: {
+                        HStack {
+                            
+                            Image(uiImage: UIImage(data: contact.imageData)!)
+                                .resizable()
+                                .frame(width: 75, height: 75, alignment: .leading)
+                            Text(contact.name)
+                                .frame(width: 200, height: 50, alignment: .center)
+                        }
+                    })
                 
             }
-        }
+        
+        .navigationTitle(Text("Contact List"))
+        
     }
 }
 
