@@ -21,7 +21,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Profile Pic")) {
+                Section(header: Text("Profile Picture:")) {
                     VStack {
                         image?
                             .resizable()
@@ -29,34 +29,29 @@ struct ContentView: View {
                         Group {
                             Button("Upload") {
                                 showingPicker = true
-                                
                             }
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 30)
+                            .frame(width: 100, height: 30)
                             .background(Color.gray)
                             .cornerRadius(3.0)
                             .foregroundColor(.black)
                             
                         }.frame(width: 100, height: 50, alignment: .bottom)
-                        
                     }
-                   
                 }
-                Section(header: Text("Enter the Contact name:")) {
-                    TextField("Name", text: $contact.name)
+                
+                Section(header: Text("Name:")) {
+                    TextField("Enter Name", text: $contact.name)
                         .padding()
                         .disabled(image == nil)
                 }
-              /*  NavigationLink(
-                    destination: ContactListView(contactList: contactList),
-                    label: {*/Button("Save") {
-                        contactList.contacts.append(contact)
-                        writeData()
-                        showAlert = true
+                Button("Save") {
+                    contactList.contacts.append(contact)
+                    writeData()
+                    showAlert = true
                     }
                     .disabled(contact.name.count < 2)
-                   //})
-            
-            }.navigationBarTitle("VIPList")
+            }
+            .navigationBarTitle("Create Contact")
             .navigationBarItems(trailing: NavigationLink(
                                     destination: ContactListView(contactList: contactList),
                                     label: {Text("List")}))
@@ -64,9 +59,7 @@ struct ContentView: View {
                 // pass the empty UIImage instance to Picker.
                 //it will then return it with an selected image.
                 
-                ImagePicker(image: $inputImage)
-                
-                
+                ImagePicker(image: $inputImage)                
             })
             .alert(isPresented: $showAlert, content: {
                 DispatchQueue.main.async {
@@ -77,22 +70,7 @@ struct ContentView: View {
                 return Alert(title: Text("Success!"), message: Text("New Contact Saved."), dismissButton: .default(Text("Continue")))
                 
             })
-            /*  .sheet(isPresented: $showTextField, onDismiss: {}, content: {
-                VStack {
-                    Section(header: Text("Enter the Contact name:")) {
-                        TextField("Name", text: $contact.name)
-                            .padding()
-                            .frame(width: 300, height: 50, alignment: .center)
-                            .background(Color.white)
-                            .cornerRadius(5.0)
-                    }
-                    Button("Save") {
-                        contactList.contacts.append(contact)
-                        writeData()
-                        showTextField = false
-                    }
-                }
-            })*/
+            
         }.onAppear(perform: readData)
         
     }
