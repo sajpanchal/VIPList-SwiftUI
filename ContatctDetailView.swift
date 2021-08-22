@@ -9,7 +9,8 @@ import SwiftUI
 import MapKit
 struct ContatctDetailView: View {
     @State var contact: Contact
-    @State var centerCoordinate = CLLocationCoordinate2D()
+     
+    
     var annotation: MKPointAnnotation {
         let annotation = MKPointAnnotation()
         annotation.coordinate.latitude = contact.coordinates.lat
@@ -27,7 +28,7 @@ struct ContatctDetailView: View {
                     .scaledToFit()
             }
           
-            MapViewSwiftUI(centerCoordinate: $centerCoordinate, annotation: annotation)
+            MapViewSwiftUI(centerCoordinate: .constant(CLLocationCoordinate2D(latitude: contact.coordinates.lat, longitude: contact.coordinates.long)), annotation: annotation)
             
         }
     }

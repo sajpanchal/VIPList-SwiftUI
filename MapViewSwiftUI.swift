@@ -22,6 +22,8 @@ struct MapViewSwiftUI: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
+        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 100000, longitudinalMeters: 100000)
+        mapView.setRegion(region, animated: true)
         return mapView
     }
     // update the annotation.
@@ -43,6 +45,7 @@ struct MapViewSwiftUI: UIViewRepresentable {
             view.canShowCallout = true
             return view
         }
+        
         // method will be called everytime our mapview is scrolled, zoomed or touched.'
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
