@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
-
+import MapKit
 struct ContentView: View {
+    @State var centerCoordinate = CLLocationCoordinate2D()
+    @State var location = MKPointAnnotation()
     @State var showingPicker = false
+    @State var showingMap = false
     @State var image: Image?
     @State var showNameText = false
     @State var showButton = false
@@ -38,7 +41,11 @@ struct ContentView: View {
                         }.frame(width: 100, height: 50, alignment: .bottom)
                     }
                 }
-                
+                Section(header: Text("Location")) {
+                    Button("Open Map") {
+                        showingMap = true
+                    }
+                }
                 Section(header: Text("Name:")) {
                     TextField("Enter Name", text: $contact.name)
                         .padding()
@@ -58,8 +65,43 @@ struct ContentView: View {
             .sheet(isPresented: $showingPicker, onDismiss: loadImage, content: {
                 // pass the empty UIImage instance to Picker.
                 //it will then return it with an selected image.
-                
                 ImagePicker(image: $inputImage)                
+            })
+            .sheet(isPresented:$showingMap, onDismiss: {}, content: {
+                VStack {
+                    Button("Close") {
+                        showingMap = false
+                    }
+                    .padding(.trailing)
+                    ZStack {
+                        MapViewSwiftUI(centerCoordinate: $centerCoordinate, annotation: location)
+                        Circle()
+                            .fill(Color.blue)
+                            .opacity(0.3)
+                            .frame(width: 32, height: 32, alignment: .center)
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button(action: {
+                                    let newLocation = MKPointAnnotation()
+                                    newLocation.coordinate = self.centerCoordinate
+                                    self.location = newLocation
+                                    contact.coordinates = Coordinates(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+                                    
+                                    
+                                }){
+                                    Image(systemName: "plus")
+                                }
+                                .padding()
+                                .background(Color.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
+                            }
+                        }
+                    }
+                }
             })
             .alert(isPresented: $showAlert, content: {
                 DispatchQueue.main.async {

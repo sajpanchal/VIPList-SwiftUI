@@ -14,6 +14,9 @@
 		7202440D26CEB81C001A6BE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7202440C26CEB81C001A6BE7 /* Preview Assets.xcassets */; };
 		7202441026CEB81C001A6BE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7202440E26CEB81C001A6BE7 /* LaunchScreen.storyboard */; };
 		7202441826CEBA52001A6BE7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7202441726CEBA52001A6BE7 /* ImagePicker.swift */; };
+		7223669626D1BB030056A5F5 /* ContatctDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7223669526D1BB030056A5F5 /* ContatctDetailView.swift */; };
+		7223669826D1BC4B0056A5F5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7223669726D1BC4B0056A5F5 /* MapView.swift */; };
+		7223669A26D1C15D0056A5F5 /* MapViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7223669926D1C15D0056A5F5 /* MapViewSwiftUI.swift */; };
 		7240C13B26CFFD1200229389 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240C13A26CFFD1200229389 /* Contact.swift */; };
 		7240C13D26D00B9F00229389 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240C13C26D00B9F00229389 /* ContactListView.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +31,9 @@
 		7202440F26CEB81C001A6BE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7202441126CEB81C001A6BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7202441726CEBA52001A6BE7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7223669526D1BB030056A5F5 /* ContatctDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatctDetailView.swift; sourceTree = "<group>"; };
+		7223669726D1BC4B0056A5F5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7223669926D1C15D0056A5F5 /* MapViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewSwiftUI.swift; sourceTree = "<group>"; };
 		7240C13A26CFFD1200229389 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		7240C13C26D00B9F00229389 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +52,9 @@
 		720243F726CEB819001A6BE7 = {
 			isa = PBXGroup;
 			children = (
+				7223669926D1C15D0056A5F5 /* MapViewSwiftUI.swift */,
+				7223669526D1BB030056A5F5 /* ContatctDetailView.swift */,
+				7223669726D1BC4B0056A5F5 /* MapView.swift */,
 				7240C13C26D00B9F00229389 /* ContactListView.swift */,
 				7240C13A26CFFD1200229389 /* Contact.swift */,
 				7202440226CEB819001A6BE7 /* VIPList */,
@@ -155,10 +164,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7202440426CEB81A001A6BE7 /* AppDelegate.swift in Sources */,
+				7223669826D1BC4B0056A5F5 /* MapView.swift in Sources */,
 				7202441826CEBA52001A6BE7 /* ImagePicker.swift in Sources */,
 				7240C13B26CFFD1200229389 /* Contact.swift in Sources */,
 				7240C13D26D00B9F00229389 /* ContactListView.swift in Sources */,
 				7202440626CEB81A001A6BE7 /* SceneDelegate.swift in Sources */,
+				7223669A26D1C15D0056A5F5 /* MapViewSwiftUI.swift in Sources */,
+				7223669626D1BB030056A5F5 /* ContatctDetailView.swift in Sources */,
 				7202440826CEB81A001A6BE7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
